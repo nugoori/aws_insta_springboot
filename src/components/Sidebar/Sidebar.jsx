@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 /** @jsxImportSource @emotion/react */
 import * as S from './Style';
-import { GoHome, GoHomeFill } from 'react-icons/go';
-import { FiSearch, FiInstagram } from 'react-icons/fi';
-import { AiOutlinePlusSquare, AiFillPlusSquare } from 'react-icons/ai';
-import NavItem from './NavIitem/NavItem';
+import {GoHomeFill, GoHome} from 'react-icons/go';
+import {FiInstagram, FiSearch} from 'react-icons/fi';
+import {AiFillPlusSquare, AiOutlinePlusSquare} from 'react-icons/ai';
+import NavItem from './NavItem/NavItem';
+import { useNavigate } from 'react-router-dom';
 
 function Sidebar(props) {
-
     const navigate = useNavigate();
-    const [ isSelectedList, setIsSelectedList ] = useState([true, false, false, false]);
+
+    const [ isSelectedList, setIsSelectedList ] = useState([false, false, false, false]);
     
     const handleHomeClick = () => {
+        console.log("zmffld")
         setIsSelectedList([true, false, false, false])
     }
 
@@ -21,6 +22,7 @@ function Sidebar(props) {
     }
 
     const handleAddContentClick = () => {
+        console.log("zmffld2")
         setIsSelectedList([false, false, true, false])
     }
 
@@ -33,16 +35,19 @@ function Sidebar(props) {
             <NavItem onclick={handleHomeClick} >
                 <FiInstagram />
             </NavItem>
+
             <NavItem onclick={handleHomeClick} >
                 {isSelectedList[0] ? <GoHomeFill /> : <GoHome />}
             </NavItem>
+
             <NavItem onclick={handleSearchClick} >
                 <FiSearch />
             </NavItem>
+
             <NavItem onclick={handleAddContentClick} >
-            {isSelectedList[2] ? 
-                <AiOutlinePlusSquare /> : <AiFillPlusSquare /> }
+                {isSelectedList[2] ? <AiFillPlusSquare /> : <AiOutlinePlusSquare />   }
             </NavItem>
+            
             <NavItem onclick={handleProfileClick} >
                 <FiInstagram />
             </NavItem>
