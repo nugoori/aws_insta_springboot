@@ -1,5 +1,5 @@
 
-export const PHONE_AND_EMAIL = /[a-zA-Z0-9]+@[\da-zA-Z]+\.[a-z]*$|^[\d]{11}$/;
+export const PHONE_OR_EMAIL = /[a-zA-Z0-9]+@[\da-zA-Z]+\.[a-z]*$|^[\d]{11}$/;
 
 export const NAME = /^[가-힣]{2,6}$/;
 

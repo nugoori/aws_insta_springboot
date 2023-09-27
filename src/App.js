@@ -10,7 +10,7 @@ function App() {
     <RootLayout>
 
       <Routes>
-        <Route path='' element={<AuthRoute element={<div>HOME</div>}/> } />
+        <Route path='/' element={<AuthRoute element={<div>HOME</div>}/> } />
         <Route path='/accounts/emailsignup' element={<AuthRoute element={<SignUp />}/> }/>
         <Route path='/accounts/login' element={<AuthRoute element={<SignIn />}/>}/>
 

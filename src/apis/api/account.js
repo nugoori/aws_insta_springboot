@@ -5,3 +5,15 @@ export const signup = async (account) => {
     console.log(response)
     return response;
 }
+
+export const signIn = async (account) => {
+    const response = await instance.post("/api/v1/auth/login", account);
+    // console.log(response)
+    return response;
+}
+
+export const authenticate = async () => {
+    const response = await instance.get("/api/v1/auth/authenticate");
+    console.log(response);
+    return response;
+}

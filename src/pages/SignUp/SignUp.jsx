@@ -13,7 +13,7 @@ function SignUp(props) {
 
     // input value 를 받을 객체 -> value가 넘어와서 account의 상태가 변하고 그 중에 ""이 있다면 버튼은 비활성화
     const emptyAccount = {
-        phoneAndEmail: "",
+        phoneOrEmail: "",
         name: "",
         username: "",
         password: ""
@@ -47,8 +47,8 @@ function SignUp(props) {
 
             if(keys.includes("username")) {
                 setErrorMessage(responseErrorMessage.username);
-            }else if(keys.includes("phoneAndEmail")) {
-                setErrorMessage(responseErrorMessage.phoneAndEmail);
+            }else if(keys.includes("phoneOrEmail")) {
+                setErrorMessage(responseErrorMessage.phoneOrEmail);
             }else if(keys.includes("name")) {
                 setErrorMessage(responseErrorMessage.name);
             }else if(keys.includes("password")) {
@@ -71,7 +71,7 @@ function SignUp(props) {
 
                     <OrBar />
 
-                    <Input placeholder={"휴대폰 번호 또는 이메일 주소"} name={"phoneAndEmail"} changeAccount={changeAccount}/>
+                    <Input placeholder={"휴대폰 번호 또는 이메일 주소"} name={"phoneOrEmail"} changeAccount={changeAccount}/>
                     <Input placeholder={"성명"} name={"name"} changeAccount={changeAccount}/>
                     <Input placeholder={"사용자 이름"} name={"username"} changeAccount={changeAccount}/>
                     <Input type={"password"} placeholder={"비밀번호"} name={"password"} changeAccount={changeAccount}/>
