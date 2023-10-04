@@ -4,13 +4,14 @@ import RootLayout from './components/Layouts/RootLayout/RootLayout';
 import AuthRoute from './auth/AuthRoute';
 import SignUp from './pages/SignUp/SignUp';
 import SignIn from './pages/SignIn/SignIn';
+import Home from './pages/Home/Home';
 
 function App() {
   return (
     <RootLayout>
 
       <Routes>
-        <Route path='/' element={<AuthRoute element={<div>HOME</div>}/> } />
+        <Route path='/' element={<AuthRoute element={<Home /> } /> } />
         <Route path='/accounts/emailsignup' element={<AuthRoute element={<SignUp />}/> }/>
         <Route path='/accounts/login' element={<AuthRoute element={<SignIn />}/>}/>
 

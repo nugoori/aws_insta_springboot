@@ -5,9 +5,11 @@ import Input from '../../components/Layouts/SignInAndUpLayout/Input/Input';
 import OrBar from '../../components/Layouts/SignInAndUpLayout/OrBar/OrBar';
 import { useNavigate } from 'react-router-dom';
 import { signIn } from '../../apis/api/account';
+import { useQueryClient } from 'react-query';
 
 function SignIn(props) {
     const navigate = useNavigate();
+    const queryClient = useQueryClient(); // AuthRoute의 useQuery
 
     // input value 를 받을 객체 -> value가 넘어와서 account의 상태가 변하고 그 중에 ""이 있다면 버튼은 비활성화
     const emptyAccount = {
@@ -36,7 +38,7 @@ function SignIn(props) {
         try {
             const response = await signIn(account);
             localStorage.setItem("accessToken", "Bearer " + response.data); // Bearer : JWT 토큰에 규칙처럼 붙여줌
-            navigate("/");
+            window.location.reload();
         } catch (error) {
             setErrorMessage(error.response.data.errorMessage);
         }
