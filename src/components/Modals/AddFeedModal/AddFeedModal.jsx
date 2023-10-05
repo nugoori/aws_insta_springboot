@@ -6,6 +6,7 @@ import ModalHeader from '../ModalHeader/ModalHeader';
 import ModalBody from '../ModalBody/ModalBody';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
+import { HiArrowNarrowLeft } from "react-icons/hi";
 
 function SelectFeedImage({ setFiles, setPage }) {
     const fileInputRef = useRef();
@@ -53,7 +54,7 @@ function ReviewFeedImg({ files }) { // 여기 files = fileList
 
         Promise.all(promises) // ** Promise.all : promise배열을 자동으로 실행시켜줌 
         .then(result => {
-            console.log(result)
+            // console.log(result)
             setImgs(result);
         })
         .catch(error => {
@@ -86,16 +87,42 @@ function AddFeedModal(props) {
     const [ leftButton, setLeftButton ] = useState(<div></div>);
     const [ rightButton, setRightButton ] = useState(<div></div>);
 
+    const BackButton = () => {
+        
+        return (
+            <div onClick={() => {setPage(page - 1)}}>
+                <HiArrowNarrowLeft />
+            </div>
+        )
+    }
+    
+    const NextButton = () => {
+        
+        return (
+            <div onClick={() => {setPage(page + 1)}}>
+                <span>다음</span>
+            </div>
+        )
+    }
+
     useEffect(() => {
         switch (page) {
             case 1:
                 setBodyComponent(<SelectFeedImage setFiles={setFiles} setPage={setPage} />);
+                setLeftButton(<div></div>);
+                setRightButton(<div></div>)
                 break;
             case 2:
                 setBodyComponent(<ReviewFeedImg files={files} />)
+                setLeftButton(BackButton());
+                setRightButton(NextButton());
                 break;
             case 3:
-
+                setBodyComponent(<>
+                    <ReviewFeedImg files={files} />
+                    <div>test</div>
+                </>)
+                setLeftButton(BackButton());
                 break;
 
             default:
